@@ -1,0 +1,213 @@
+@import url(../../../css/control/button.css);
+@import url(../../../css/control/dialog.css);
+@import url(../../../css/control/font.css);
+@import url(../../../css/control/icon.css);
+@import url(../../../css/control/input-field.css);
+@import url(../../../css/control/menu.css);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "MISA_Fonts";
+  font-size: 13px;
+}
+
+.app {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.app .wrap-left {
+  display: flex;
+}
+.app .wrap-right {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+body .layout-header {
+  position: relative;
+  height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.layout-header .title-page {
+  font-size: 15px;
+  font-weight: bold;
+}
+.layout-header .right-header {
+  display: flex;
+  position: relative;
+}
+.layout-header .right-header .organization-name {
+  display: flex;
+  align-items: center;
+}
+.layout-header .right-header .header-item:not(:first-child) {
+  margin-left: 20px;
+}
+.layout-header .right-header .tool-header {
+  display: flex;
+}
+.layout-header .right-header .ctr-number input {
+  border: none;
+  width: 50px;
+  margin-left: 8px;
+}
+.layout-header .right-header .ctr-number input::-webkit-inner-spin-button {
+  opacity: 1;
+}
+.layout-header .right-header .ctr-number input:hover, .layout-header .right-header .ctr-number input:focus, .layout-header .right-header .ctr-number input:active {
+  border: none;
+  outline: none;
+}
+
+.wrap-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  padding: 16px;
+  overflow: hidden;
+  background-color: #f4f7ff;
+}
+.wrap-content .toolbar {
+  display: flex;
+  padding: 8px 0;
+}
+
+.ctr-input {
+  height: 35px;
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 2.5px;
+  border: 1px solid #afafaf;
+  width: 180px;
+  height: 35px;
+  overflow: hidden;
+}
+.ctr-input .con-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 32px;
+}
+.ctr-input input {
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+.ctr-input input:hover, .ctr-input input:focus, .ctr-input input:active {
+  border: none;
+  outline: none;
+}
+.ctr-input input::placeholder {
+  font-style: italic;
+}
+
+.ctr-item:not(:first-child) {
+  margin-left: 10px;
+}
+
+.table-container {
+  position: relative;
+  flex: 1;
+  margin-top: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 3.5px;
+  border: 1px solid #afafaf;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.table-container .grid-table {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.table-container .grid-table th {
+  padding: 8px;
+}
+.table-container .grid-table tbody tr {
+  height: 39px;
+}
+.table-container .grid-table tbody tr td {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-word;
+  padding: 8px;
+}
+.table-container table,
+.table-container tr td {
+  border-bottom: 1px solid #e0e0e0;
+}
+.table-container tbody {
+  display: block;
+  flex: 1;
+  overflow: auto;
+}
+.table-container thead,
+.table-container tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* even columns width , fix width of table too*/
+}
+.table-container thead {
+  width: calc(100% - 1em); /* scrollbar is average 1em/16px width, remove it from thead width */
+}
+.table-container table {
+  width: 400px;
+}
+
+.small {
+  width: 66px;
+}
+.small .text-menu {
+  display: none;
+}
+.small .misa-icon:last-child {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.right-header .tool-header {
+  display: flex;
+}
+.right-header .tool-header .notification {
+  padding: 10px;
+}
+.right-header .tool-header .tf-home {
+  padding: 10px;
+}
+.right-header .tool-header .help {
+  padding: 10px;
+}
+
+/*# sourceMappingURL=app.css.map */

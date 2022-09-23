@@ -1,0 +1,195 @@
+@mixin setConfig($width, $height) {
+  width: $width + px;
+  height: $height + px;
+  min-width: $width + px;
+}
+
+@mixin setSquare($num) {
+  @include setConfig($num, $num);
+}
+
+@mixin commonApp() {
+  background-image: url("../images/icons/qlts-icon.svg");
+}
+@mixin commonAppIcon {
+  background-image: url("../images/icons/ic_sprites.svg");
+}
+.app-icon {
+  @include commonApp();
+  @include setSquare(24);
+  //Tìm kiếm
+  &.ic-menu__search {
+    background-position: -241px -153px;
+    &:hover,
+    &:focus {
+      background-position: -240px -196px;
+    }
+  }
+  // Ô tô
+  &.ic-car {
+    background-position: -65px -153px;
+    &:hover,
+    &:focus {
+      background-position: -65px -197px;
+    }
+  }
+  //Danh mục
+  &.ic-dictionary {
+    background-position: -196px -152px;
+    &:hover,
+    &:focus {
+      background-position: -196px -196px;
+    }
+  }
+  //Công cụ
+  &.ic-tools {
+    background-position: -153px -153px;
+    &:hover,
+    &:focus {
+      background-position: -153px -197px;
+    }
+  }
+  //Tổng quan
+  &.ic-overview {
+    background-position: -20px -152px;
+    &:hover,
+    &:focus {
+      background-position: -22px -198px;
+    }
+  }
+
+  //Tài sản
+  &.ic-asset {
+    background-position: -108px -152px;
+    &:hover,
+    &:focus {
+      background-position: -110px -197px;
+    }
+  }
+  //Báo cáo
+  &.ic-report {
+    background-position: -328px -152px;
+    //-328 152
+    &:hover,
+    &:focus {
+      background-position: -330px -198px;
+    }
+  }
+  //Home
+  &.ic-home {
+    @include setSquare(36);
+    background-position: -20px -680px;
+  }
+  //Quay lại
+  &.ic-back {
+    background-position: -20px -284px;
+  }
+  //Thông báo
+  &.ic-notification {
+    background-position: -328px -107px;
+    // &:hover {
+    //   background-position: -372px -108px;
+    // }
+  }
+  //Trợ giúp
+  &.ic-question-message {
+    background-position: -64px -64px;
+  }
+  &.ic-user {
+    background-position: -20px -20px;
+  }
+  &.ic-arow {
+    background-position: -64px -328px;
+  }
+  &.ic-view-grid {
+    background-position: -196px -20px;
+  }
+  &.ic-angle-down {
+    background-position: -150px -284px;
+  }
+  &.ic-angle-up {
+    background-position: -28px -338px;
+  }
+  &.ic-setting {
+    background-position: -156px -23px;
+  }
+  &.ic-add {
+    @include setSquare(15);
+    background-position: -199px -420px;
+  }
+  &.ic-edit {
+    background-position: -151px -63px;
+  }
+  &.ic-replication {
+    background-position: -107px -107px;
+  }
+  &.ic-delete {
+    background-position: -419px -111px;
+  }
+  &.ic-delete__toolbar {
+    background-position: -460px -107px;
+  }
+  &.ic-fillter {
+    background-position: -240px -64px;
+  }
+  &.ic-date {
+    background-position: -287px -67px;
+  }
+  &.ic-input__picker {
+    background-position: -419px -111px;
+  }
+  &.ic-export {
+    @include setSquare(20);
+    background-position: -285px -110px;
+  }
+  &.ic-search {
+    background-position: -239px -19px;
+  }
+  &.ic-angle-downs {
+    background-position: -64px -328px;
+  }
+  &.ic-angle-left {
+    background-position: -21px -240px;
+  }
+  &.ic-angle-right {
+    background-position: -64px -240px;
+  }
+  &.ic-account{
+    @include commonAppIcon();
+    background-position:  -15px -248px;
+  }
+}
+
+
+.menu-group {
+  .menu-item:hover,
+  .menu-item:focus {
+    & .ic-menu__search {
+      background-position: -240px -196px;
+    }
+    & .ic-car {
+      background-position: -65px -197px;
+    }
+    //Danh mục
+    & .ic-dictionary {
+      background-position: -196px -196px;
+    }
+    //Công cụ
+    & .ic-tools {
+      background-position: -153px -197px;
+    }
+    //Tổng quan
+    & .ic-overview {
+      background-position: -20px -196px;
+    }
+
+    //Tài sản
+    & .ic-asset {
+      background-position: -108px -196px;
+    }
+    //Báo cáo
+    & .ic-report {
+      background-position: -328px -196px;
+    }
+  }
+}

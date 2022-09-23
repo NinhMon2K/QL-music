@@ -1,0 +1,86 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 44px;
+  background-color: #fff;
+  .left-header {
+    margin-left: 23px;
+    .title-page {
+      font-weight: 700;
+    }
+  }
+  .right-header {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    .organization-name {
+      font-weight: 500;
+      color: #001031;
+      margin-right: 26px;
+    }
+    .tool-header {
+      display: flex;
+      .notification {
+        padding: 10px;
+      }
+      .tf-home {
+        padding: 10px;
+      }
+      .help {
+        padding: 10px;
+      }
+      .tool {
+        .app-icon {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .user-header {
+      display: flex;
+      margin-left: 10px;
+      .c-2 {
+        width: 24px;
+        height: 24px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .more {
+        margin-left: -3px;
+        margin-right: 20px;
+      }
+    }
+
+    .ctr-number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(26, 164, 200, 0.2);
+      border-radius: 3px;
+      margin-right: 27px;
+      width: 112px;
+      height: 30px;
+      overflow: hidden;
+      input {
+        border: none;
+        width: 50px;
+        margin-left: 8px;
+
+        &::-webkit-inner-spin-button {
+          opacity: 1;
+        }
+        &:hover,
+        &:focus,
+        &:active {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+}
