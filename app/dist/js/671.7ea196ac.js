@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkmisa_vuejs"]=self["webpackChunkmisa_vuejs"]||[]).push([[671],{4671:function(s,e,n){n.r(e),n.d(e,{default:function(){return o}});var u=n(3396);const c={class:"music-page page-view"};function t(s,e,n,t,i,a){const r=(0,u.up)("ms-music");return(0,u.wg)(),(0,u.iD)("div",c,[(0,u.Wm)(r)])}var i={components:{MsMusic:(0,u.RC)((()=>n.e(67).then(n.bind(n,5067))))},setup(){}},a=n(89);const r=(0,a.Z)(i,[["render",t]]);var o=r}}]);
+//# sourceMappingURL=671.7ea196ac.js.map

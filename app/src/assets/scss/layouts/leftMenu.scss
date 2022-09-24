@@ -1,3 +1,5 @@
+@import "./../_variables.scss";
+
 .wrap-left {
   position: relative;
   height: 100%;
@@ -56,8 +58,14 @@
         border-radius: 5px;
         padding: 8px 10px;
         opacity: 0.5;
+        transition: 1s;
         &:hover {
           opacity: 1;
+          transition: 0.4s;
+          -webkit-transition: 0.4s;
+          -moz-transition: 0.4s;
+          -ms-transition: 0.4s;
+          -o-transition: 0.4s;
         }
         .text-menu {
           color: white;
@@ -65,6 +73,16 @@
           padding-left: 10px;
         }
         &:hover {
+          //background-color: #1aa4c8;
+        }
+        &:active,
+        &:active:focus-within,
+        &:focus {
+          transition: 2s;
+          -webkit-transition: 2s;
+          -moz-transition: 2s;
+          -ms-transition: 2s;
+          -o-transition: 2s;
           background-color: #1aa4c8;
         }
       }
