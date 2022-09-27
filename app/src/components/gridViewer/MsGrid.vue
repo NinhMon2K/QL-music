@@ -60,9 +60,7 @@
               </div>
             </td>
             <td style="font-size: 13px; font-weight: 700"> {{  allData.length }}</td>
-            <td style="font-size: 13px; font-weight: 700">249.000.000</td>
-            <td style="font-size: 13px; font-weight: 700">19.716.000</td>
-            <td style="font-size: 13px; font-weight: 700">229.284.000</td>
+            <td style="font-size: 13px; font-weight: 700"></td>
             <td></td>
           </tr>
         </tfoot>
