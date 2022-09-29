@@ -12,7 +12,7 @@
     <div class="toolbar-right">
       <ms-button
         ref="ab"
-        text="Thêm tài khoản"
+        :text="ResourceButton.Buttons.ButtonAddAccount"
         id="btn-add"
         leftIcon="ic-add"
         :radius="true"
@@ -40,8 +40,12 @@ import MsButton from "@/components/button/MsButton.vue";
 import MsInput from "@/components/input/MsInput.vue";
 import MsPopupAsset from "@/components/popup/MsPopupAsset.vue";
 import MsGrid from "@/components/gridViewer/MsGrid.vue";
-import { getCurrentInstance, ref } from "vue";
+import { getCurrentInstance, onMounted, ref } from "vue";
 import ResourceTable from "./../../resource/dictionary/ResourceTable.js";
+import ResourceButton from "./../../resource/dictionary/ResourceButton.js";
+
+import testAPI from "@/apis/api/testAPI.js";
+
 export default {
   name: "MsAccount",
   components: {
@@ -61,6 +65,12 @@ export default {
   async setup() {
     const { proxy } = getCurrentInstance();
     window.a = proxy;
+
+    onMounted(async () => {
+      let res = await testAPI.get("categoryGetAll", {});
+      console.log(res?.Data);
+    });
+
     const columns = ref([
       {
         field: "selected",
@@ -130,7 +140,6 @@ export default {
         fixed_asset_category_name: "Máy vi tính xách tay",
         department_name: "Phòng hành chính kế toán",
         cost: 1,
-       
       },
       {
         fixedAssetId: 2,
@@ -139,7 +148,6 @@ export default {
         fixed_asset_category_name: "Máy vi tính xách tay",
         department_name: "Phòng thư ký",
         cost: 1,
-        
       },
     ];
 
@@ -155,6 +163,8 @@ export default {
       columns,
       allData,
       //  AccountData
+      ResourceTable,
+      ResourceButton,
     };
   },
   data() {

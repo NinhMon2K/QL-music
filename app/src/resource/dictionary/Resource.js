@@ -9,5 +9,5 @@ export default {
         Category : 'Thể loại',
         Banner : 'Banner',
         Statistical : 'Thống kê'
-    }
+    },
 }

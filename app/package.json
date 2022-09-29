@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "autonumeric": "^4.6.0",
-    "axios": "^3.6.5",
+    "axios": "^0.24.0",
     "babel-plugin-wildcard": "^7.0.0",
     "click-outside-vue3": "^4.0.1",
     "custom-event-polyfill": "1.0.7",
