@@ -10,4 +10,18 @@ export default {
   tablesAlbum: {
     AccountName: "Tên album",
   },
+  Controls: {
+    FunctionControl: "Chức năng",
+  },
+  FieldAccount: {
+    Id: "id",
+    AccountName: "accountName",
+    PassWord: "password",
+    AccountId: "accountId",
+    Name: "name",
+    Avatar: "avatar",
+    Phone: "phone",
+    Sex: "sex",
+    Birthday: "birthday",
+  },
 };

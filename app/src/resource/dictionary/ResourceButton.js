@@ -9,5 +9,6 @@ export default {
         ButtonUpdate:'Sửa',
         ButtonDelete:'Xóa',
         ButtonCancel:'Hủy',
+        
     }
 }

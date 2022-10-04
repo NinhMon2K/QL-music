@@ -66,73 +66,7 @@ export default {
     const { proxy } = getCurrentInstance();
     window.a = proxy;
 
-    onMounted(async () => {
-      let res = await testAPI.get("categoryGetAll", {});
-      console.log(res?.Data);
-    });
-
-    const columns = ref([
-      {
-        field: "selected",
-        title: "abc",
-        type: "Checkbox",
-        width: 48,
-      },
-      {
-        field: "fixedAssetId",
-        title: "STT",
-        type: "Number",
-        width: 48,
-      },
-      {
-        field: "fixedAssetCode",
-        title: ResourceTable.tablesAccount.AccountUser,
-        type: "Text",
-        width: 150,
-      },
-      {
-        field: "fixed_asset_name",
-        title: ResourceTable.tablesAccount.AccountName,
-        type: "Text",
-        minWidth: 159,
-      },
-      {
-        field: "fixed_asset_category_name",
-        title: ResourceTable.tablesAccount.AccountPhone,
-        type: "Text",
-        width: 163,
-      },
-      {
-        field: "department_name",
-        title: ResourceTable.tablesAccount.AccountSex,
-        type: "Text",
-        width: 178,
-      },
-      {
-        field: "cost",
-        title: ResourceTable.tablesAccount.AccountBirthday,
-        type: "Number",
-        width: 98,
-      },
-      {
-        field: "c",
-        title: "Chức năng",
-        type: "Action",
-        width: 83,
-        action: [
-          {
-            command: "Edit",
-            icon: "ic-edit",
-          },
-          {
-            command: "Edit",
-            icon: "ic-replication",
-          },
-        ],
-      },
-    ]);
-
-    const allData = [
+    const allData = ref([
       {
         fixedAssetId: 1,
         fixedAssetCode: "55H7WN72/2022",
@@ -149,7 +83,78 @@ export default {
         department_name: "Phòng thư ký",
         cost: 1,
       },
-    ];
+    ]);
+
+    onMounted(
+      (async() => {
+        let res = await testAPI.get("categoryGetAll", {});
+        // console.log(res?.Data);
+        proxy.allData.value = res?.Data;
+      })
+    );
+
+    const columns = ref([
+      {
+        field: "selected",
+        title: "abc",
+        type: "Checkbox",
+        width: 48,
+      },
+      {
+        field: ResourceTable.FieldAccount.AccountId,
+        title: "STT",
+        type: "Number",
+        width: 48,
+      },
+      {
+        field: ResourceTable.FieldAccount.AccountName,
+        title: ResourceTable.tablesAccount.AccountUser,
+        type: "Text",
+        width: 150,
+      },
+      {
+        field: ResourceTable.FieldAccount.Name,
+        title: ResourceTable.tablesAccount.AccountName,
+        type: "Text",
+        minWidth: 159,
+      },
+      {
+        field: ResourceTable.FieldAccount.Phone,
+        title: ResourceTable.tablesAccount.AccountPhone,
+        type: "Text",
+        width: 163,
+      },
+      {
+        field: ResourceTable.FieldAccount.Sex,
+        title: ResourceTable.tablesAccount.AccountSex,
+        type: "Text",
+        width: 178,
+      },
+      {
+        field: ResourceTable.FieldAccount.Birthday,
+        title: ResourceTable.tablesAccount.AccountBirthday,
+        type: "Number",
+        width: 98,
+      },
+      {
+        field: "c",
+        title: ResourceTable.Controls.FunctionControl,
+        type: "Action",
+        width: 83,
+        action: [
+          {
+            command: "Edit",
+            icon: "ic-edit",
+          },
+          {
+            command: "Edit",
+            icon: "ic-replication",
+          },
+        ],
+      },
+    ]);
+
+   
 
     // const loadAccountData = async ()=> {
     //   return new Promise((resolve, reject) => {
