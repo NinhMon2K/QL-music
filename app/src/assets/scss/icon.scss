@@ -17,6 +17,9 @@
 @mixin commonAppIconMusic {
   background-image: url("../images/icons/360_F_512950559_nwN42J9k2JbEBZFju5HJgVerukHtVXrS.jpg");
 }
+@mixin commonAppIconAlbum {
+  background-image: url("../images/icons8-albums.png");
+}
 .app-icon {
   @include commonApp();
   @include setSquare(24);
@@ -163,7 +166,10 @@
   }
   &.ic-music{
     @include commonAppIconMusic();
-    
+  }
+  &.ic-albums{
+    @include commonAppIconAlbum();
+    @include setSquare(46);
   }
 }
 
