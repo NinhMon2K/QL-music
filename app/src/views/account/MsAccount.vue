@@ -28,12 +28,7 @@
       <ms-popup-asset titlePopup="Thêm mới" v-if="isShowPopup"></ms-popup-asset>
     </div>
   </div>
-  <Suspense>
-    <template #default>
-      <ms-grid :columns="columns" :allData="allData" ref="abc"> </ms-grid>
-    </template>
-    <template #fallback> </template>
-  </Suspense>
+  <ms-grid :columns="columns" :allData="allData" ref="abc"> </ms-grid>
 </template>
 <script>
 import MsButton from "@/components/button/MsButton.vue";
@@ -85,13 +80,11 @@ export default {
       },
     ]);
 
-    onMounted(
-      (async() => {
-        let res = await testAPI.get("categoryGetAll", {});
-        // console.log(res?.Data);
-        proxy.allData.value = res?.Data;
-      })
-    );
+    onMounted(async () => {
+      let res = await testAPI.get("categoryGetAll", {});
+      // console.log(res?.Data);
+      proxy.allData.value = res?.Data;
+    });
 
     const columns = ref([
       {
@@ -153,8 +146,6 @@ export default {
         ],
       },
     ]);
-
-   
 
     // const loadAccountData = async ()=> {
     //   return new Promise((resolve, reject) => {

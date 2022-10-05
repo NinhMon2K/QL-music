@@ -8,7 +8,9 @@ export default {
     AccountAvatar: "Ảnh đại diện",
   },
   tablesAlbum: {
-    AccountName: "Tên album",
+    AlbumID: "Mã album",
+    AlbumName: "Tên album",
+    AmountSong:"Số lượng bài hát"
   },
   Controls: {
     FunctionControl: "Chức năng",
@@ -23,5 +25,13 @@ export default {
     Phone: "phone",
     Sex: "sex",
     Birthday: "birthday",
+  },
+  FieldAlbum: {
+    AlbumId:"albumId",
+    id:"id",
+    songId:"songId",
+    Name:"name",
+    AlbumName:"albumName",
+    AmountSong:"amountSong"
   },
 };
