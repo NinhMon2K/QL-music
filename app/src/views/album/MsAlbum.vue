@@ -1,45 +1,71 @@
 <template>
-  <div class="container-albums">
-    <div class="container-toolbar">
-      <ms-input
-        :hasLabel="false"
-        leftIcon="ic-search "
-        id="txt-search"
-        :radius="true"
-        placeholder="Tìm kiếm album"
-      ></ms-input>
-
-      <ms-button
-        ref="ab"
-        :text="ResourceButton.Buttons.ButtonAddAlbum"
-        id="btn-add"
-        leftIcon="ic-add"
-        :radius="true"
-      >
-      </ms-button>
-    </div>
-
-    <div class="container-content">
-      <div class="product-album">
-        <ul class="list-album">
-          <li
-            class="item-album"
-            v-for="(itemAlbum, index) in allData"
-            :key="index"
-          >
-            <div class="img-item">
-              <img src="@/assets/images/icons8-album-64.png" alt="" />
-            </div>
-            <div class="amount-song">
-              <p>Số bài hát:</p>
-              <p>{{ itemAlbum.amountSong }}</p>
-            </div>
-            <div class="title-item">
-              <p>{{ itemAlbum.name }}</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+  <div class="container-albums__detail">
+    <div class="container-content__detail">
+      <table>
+        <thead>
+          <th>Danh sách bài hát</th>
+          <th>Danh sách bài hát album</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="c-3">
+              <div>Tìm kiếm</div>
+              <div class="ct1__album-detail">
+                <ms-input
+                  :hasLabel="false"
+                  leftIcon="ic-search "
+                  id="txt-search"
+                  :radius="true"
+                  placeholder="Tìm kiếm tài khoản"
+                ></ms-input>
+              </div>
+              <div class="ct2__album-detail">
+                <ms-input
+                  :hasLabel="false"
+                  leftIcon="ic-search "
+                  id="txt-search"
+                  :radius="true"
+                  placeholder="Tìm kiếm tài khoản"
+                ></ms-input>
+                <ms-button
+                  ref="ab"
+                  :text="ResourceButton.Buttons.ButtomSearch"
+                  id="btn-add"
+                  leftIcon="ic-add"
+                  :radius="true"
+                  @click="handleClickAdd"
+                >
+                </ms-button>
+              </div>
+              <div class="ct3__album-detail">
+                <ms-grid :columns="columnsAlbums" :allData="allData" ref="abc">
+                </ms-grid>
+              </div>
+            </td>
+            <td class="c-1">
+            
+              <div class="box-remove">
+                 <ms-button
+                ref="ab"
+                :text="ResourceButton.Buttons.ButtonDelete"
+                id="btn-add"
+                leftIcon="ic-add"
+                :radius="true"
+                @click="handleClickAdd"
+              ></ms-button></div>
+              <div>
+                <ms-grid
+                :columns="columnsAlbums"
+                :allData="allData"
+                ref="abc"
+              ></ms-grid>
+              </div>
+             
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -47,89 +73,30 @@
 import { defineComponent, getCurrentInstance, onMounted, ref } from "vue";
 import MsButton from "@/components/button/MsButton.vue";
 import MsInput from "@/components/input/MsInput.vue";
+import MsGrid from "@/components/gridViewer/MsGrid.vue";
 import ResourceButton from "./../../resource/dictionary/ResourceButton.js";
 export default defineComponent({
   name: "MsAlbum",
   components: {
     MsButton,
     MsInput,
+    MsGrid,
   },
   setup() {
-    const allData = ref([
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-      {
-        image: "",
-        amountSong: 20,
-        name: "Album 1",
-      },
-    ]);
-
+    const columnsAlbums = ref([]);
+    const allDataAlbums = ref([]);
+    const columnsAlbumsDetail = ref([]);
+    const allDataAlbumsDetail = ref([]);
     return {
-      allData,
+      columnsAlbums,
+      allDataAlbums,
+      columnsAlbumsDetail,
+      allDataAlbumsDetail,
       ResourceButton,
     };
   },
 });
 </script>
 <style lang="scss" scoped>
-@import "@/assets/scss/view/album/MsAllBum.scss";
+@import "@/assets/scss/view/album/MsAlbumDetail.scss";
 </style>
