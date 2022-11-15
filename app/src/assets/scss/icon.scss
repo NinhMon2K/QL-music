@@ -11,14 +11,19 @@
 @mixin commonApp() {
   background-image: url("../images/icons/qlts-icon.svg");
 }
-@mixin commonAppIcon {
-  background-image: url("../images/icons/ic_sprites.svg");
+@mixin commonAppDropDown() {
+  background-image: url("../images/icons/icons8-v-24.png");
 }
-@mixin commonAppIconMusic {
-  background-image: url("../images/icons/360_F_512950559_nwN42J9k2JbEBZFju5HJgVerukHtVXrS.jpg");
+@mixin commonAppIcWarning() {
+  background-image: url("../images/icons/waring.png");
+  background-repeat: no-repeat;
 }
-@mixin commonAppIconAlbum {
-  background-image: url("../images/icons8-albums.png");
+@mixin commonAppIcCheckBox() {
+  background-image: url("../images/icons/checked.png");
+}
+@mixin commonAppIcToastSuccess() {
+  background-image: url("@/assets/images/icons/checked.png");
+  background-repeat: no-repeat;
 }
 .app-icon {
   @include commonApp();
@@ -136,7 +141,7 @@
     background-position: -460px -107px;
   }
   &.ic-fillter {
-    background-position: -240px -64px;
+    background-position: -239px -64px;
   }
   &.ic-date {
     background-position: -287px -67px;
@@ -155,28 +160,52 @@
     background-position: -64px -328px;
   }
   &.ic-angle-left {
-    background-position: -21px -240px;
+    @include setSquare(20);
+    background-position: -22px -242px;
   }
   &.ic-angle-right {
-    background-position: -64px -240px;
+    @include setSquare(20);
+    background-position: -65px -242px;
   }
-  &.ic-account{
-    @include commonAppIcon();
-    background-position:  -15px -248px;
+  &.ic-angle_down {
+    @include setSquare(8);
+    background-position: -204px -341px;
   }
-  &.ic-music{
-    @include commonAppIconMusic();
+  &.ic-angle_up {
+    @include setSquare(8);
+    background-position: -204px -330px;
   }
-  &.ic-albums{
-    @include commonAppIconAlbum();
-    @include setSquare(46);
+  &.ic-dropdown {
+    @include commonAppDropDown();
+  }
+  &.ic-date {
+    background-position: -284px -64px;
+  }
+  &.ic-warning {
+    @include commonAppIcWarning();
+    @include setSquare(32);
+  }
+  &.ic-checkbox {
+    @include commonAppIcCheckBox();
+  }
+  &.ic-success {
+    @include commonAppIcToastSuccess();
+    @include setSquare(20);
+  }
+  &.ic-close {
+    @include setSquare(18);
+    background-position: -375px -287px;
+  }
+  &.ic-remove__cbo {
+    @include setSquare(10);
+    background-position: -291px -247px;
   }
 }
-
-
 .menu-group {
   .menu-item:hover,
-  .menu-item:focus {
+  .menu-item:focus,
+  .menu-item:active,
+  .menu-item:focus-within {
     & .ic-menu__search {
       background-position: -240px -196px;
     }
@@ -195,7 +224,6 @@
     & .ic-overview {
       background-position: -20px -196px;
     }
-
     //Tài sản
     & .ic-asset {
       background-position: -108px -196px;

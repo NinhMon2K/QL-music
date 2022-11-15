@@ -1,176 +1,194 @@
 <template>
   <div class="contrainer-toolbar">
     <div class="toobar-left">
-      <ms-input
-        :hasLabel="false"
-        leftIcon="ic-search "
-        id="txt-search"
-        :radius="true"
-        placeholder="Tìm kiếm tài khoản"
-      ></ms-input>
+      <div class="container__search">
+        <v-input
+          :hasLabel="false"
+          leftIcon="ic-search"
+          id="txt-search"
+          :radius="true"
+          v-model="txtSearch"
+          placeholder="Tìm kiếm tài khoản"
+          :disabledMessage="false"
+          message=""
+        ></v-input>
+      </div>
+      <v-combobox
+        leftIcon="ic-fillter"
+        valueField="fixed_asset_category_id"
+        displayField="fixed_asset_category_name"
+        rightIcon="ic-angle-downs"
+        placeholder="Loại tài sản"
+        :heightCb="13"
+      ></v-combobox>
+      <v-combobox
+        leftIcon="ic-fillter"
+        valueField="department_id"
+        :heightCb="13"
+        displayField="department_name"
+        rightIcon="ic-angle-downs"
+        placeholder="Bộ phận sử dụng"
+      ></v-combobox>
     </div>
     <div class="toolbar-right">
-      <ms-button
-        ref="ab"
-        :text="ResourceButton.Buttons.ButtonAddAccount"
-        id="btn-add"
-        leftIcon="ic-add"
-        :radius="true"
-        @click="handleClickAdd"
-      >
-      </ms-button>
-      <ms-button leftIcon="ic-export" id="btn-export" :radius="true">
-      </ms-button>
-      <!-- <ms-popup-asset ></ms-popup-asset> -->
-
-      <ms-button leftIcon="ic-delete__toolbar" id="btn-delete" :radius="true">
-      </ms-button>
-      <ms-popup-asset titlePopup="Thêm mới" v-if="isShowPopup"></ms-popup-asset>
+      <v-tooltip content="Thêm mới tài sản" placement="bottom" right="bottom">
+        <v-button
+          ref="MsPopupAsset"
+          text="Thêm tài khoản"
+          id="btn-add"
+          leftIcon="ic-add"
+          :radius="true"
+        >
+        </v-button>
+      </v-tooltip>
+      <v-tooltip content="Xuất Excel" placement="bottom">
+        <v-button
+          leftIcon="ic-export"
+          id="btn-export"
+      
+          :radius="true"
+        ></v-button>
+      </v-tooltip>
+      <v-tooltip content="Xóa" placement="bottom">
+        <v-button
+          leftIcon="ic-delete__toolbar"
+          id="btn-delete"
+          :radius="true"
+        >
+        </v-button>
+      </v-tooltip>
     </div>
   </div>
-  <ms-grid :columns="columns" :allData="allData" ref="abc"> </ms-grid>
+  <v-grid></v-grid>
 </template>
 <script>
-import MsButton from "@/components/button/MsButton.vue";
-import MsInput from "@/components/input/MsInput.vue";
-import MsPopupAsset from "@/components/popup/MsPopupAsset.vue";
-import MsGrid from "@/components/gridViewer/MsGrid.vue";
-import { getCurrentInstance, onMounted, ref } from "vue";
-import ResourceTable from "./../../resource/dictionary/ResourceTable.js";
-import ResourceButton from "./../../resource/dictionary/ResourceButton.js";
-
-import testAPI from "@/apis/api/testAPI.js";
-
+import VButton from "@/components/button/VButton.vue";
+import VInput from "@/components/input/VInput.vue";
+import VCombobox from "@/components/combobox/VCombobox.vue";
+import VTooltip from "@/components/tooltip/VTooltip.vue";
+import {
+  computed,
+  getCurrentInstance,
+  onMounted,
+  onUpdated,
+  reactive,
+  ref,
+  watch,
+} from "vue";
+import VGrid from "@/components/grid/VGrid.vue"
+import ResourceTable from "@/assets/js/resource/resourceTable";
+import Enum from "@/assets/js/enums/enum.js";
+import Resource from "@/assets/js/resource/resource.js";
 export default {
-  name: "MsAccount",
+  name: "MsAsset",
   components: {
-    MsButton,
-    MsInput,
-    MsGrid,
-    MsPopupAsset,
+    VButton,
+    VInput,
+    VTooltip,
+    VGrid
   },
   methods: {
-    handleClickAdd() {
-      this.isShowPopup = true;
-    },
     close() {
       this.isShowPopup = false;
     },
+    hanhdleAccumulated() {},
   },
   async setup() {
     const { proxy } = getCurrentInstance();
-    window.a = proxy;
-
-    const allData = ref([
+    window.asset = proxy;
+  
+    /**
+     * Xác định cột cho table
+     * @param {string} type giá trị là number,text hay checked
+     * @param {string} field trường để map dữ liệu
+     * @param {string} title text hiện thị lên giao diện
+     * @param {string} width độ rộng của cột
+     * @param {string} align vị trí bên trái, phải, center
+     * Author: NNNinh (16/10/2022)
+     */
+     const columns = ref([
       {
-        fixedAssetId: 1,
-        fixedAssetCode: "55H7WN72/2022",
-        fixed_asset_name: "Dell Inspiron",
-        fixed_asset_category_name: "Máy vi tính xách tay",
-        department_name: "Phòng hành chính kế toán",
-        cost: 1,
-      },
-      {
-        fixedAssetId: 2,
-        fixedAssetCode: "MXT88618",
-        fixed_asset_name: "Máy tính xách tay Fujisu",
-        fixed_asset_category_name: "Máy vi tính xách tay",
-        department_name: "Phòng thư ký",
-        cost: 1,
-      },
-    ]);
-
-    onMounted(async () => {
-      let res = await testAPI.get("categoryGetAll", {});
-      // console.log(res?.Data);
-      proxy.allData.value = res?.Data;
-    });
-
-    const columns = ref([
-      {
-        field: "selected",
-        title: "abc",
-        type: "Checkbox",
-        width: 48,
-      },
-      {
-        field: ResourceTable.FieldAccount.AccountId,
-        title: "STT",
+        field: ResourceTable.FieldAsset.STT,
+        title: ResourceTable.lblTableAssets.STT,
         type: "Number",
         width: 48,
+        align: "Center",
       },
       {
-        field: ResourceTable.FieldAccount.AccountName,
-        title: ResourceTable.tablesAccount.AccountUser,
+        field: ResourceTable.FieldAsset.fixedAssetCode,
+        title: ResourceTable.lblTableAssets.lblAssetCode,
         type: "Text",
-        width: 150,
+        width: 80,
       },
       {
-        field: ResourceTable.FieldAccount.Name,
-        title: ResourceTable.tablesAccount.AccountName,
+        field: ResourceTable.FieldAsset.fixedAssetName,
+        title: ResourceTable.lblTableAssets.lblAssetName,
         type: "Text",
-        minWidth: 159,
+        minWidth: 140,
       },
       {
-        field: ResourceTable.FieldAccount.Phone,
-        title: ResourceTable.tablesAccount.AccountPhone,
+        field: ResourceTable.FieldAsset.fixedAssetCategoryName,
+        title: ResourceTable.lblTableAssets.lblAssetCategoryName,
         type: "Text",
-        width: 163,
+        width: 250,
       },
       {
-        field: ResourceTable.FieldAccount.Sex,
-        title: ResourceTable.tablesAccount.AccountSex,
+        field: ResourceTable.FieldDepartment.departmentName,
+        title: ResourceTable.lblTableAssets.lblDepartmentName,
         type: "Text",
-        width: 178,
+        width: 165,
       },
       {
-        field: ResourceTable.FieldAccount.Birthday,
-        title: ResourceTable.tablesAccount.AccountBirthday,
+        field: ResourceTable.FieldAsset.quantity,
+        title: ResourceTable.lblTableAssets.lblQuantity,
         type: "Number",
-        width: 98,
+        width: 60,
       },
       {
-        field: "c",
+        field: ResourceTable.FieldAsset.cost,
+        title: ResourceTable.lblTableAssets.lblCost,
+        type: "Number",
+        width: 110,
+      },
+      {
+        field: ResourceTable.FieldAsset.depreciationResidual,
+        title: ResourceTable.lblTableAssets.lblAccumulated,
+        type: "Number",
+        width: 110,
+      },
+      {
+        field: ResourceTable.FieldAsset.depreciationResidual,
+        title: ResourceTable.lblTableAssets.lblAsset,
+        type: "Number",
+        width: 110,
+      },
+      {
+        field: ResourceTable.FieldAsset.fixedAssetId,
         title: ResourceTable.Controls.FunctionControl,
         type: "Action",
-        width: 83,
+        width: 100,
         action: [
           {
-            command: "Edit",
+            command: 0,
             icon: "ic-edit",
+            click: clickMenu,
           },
           {
-            command: "Edit",
+            command: 1,
             icon: "ic-replication",
+            click: clickMenu,
           },
         ],
       },
     ]);
 
-    // const loadAccountData = async ()=> {
-    //   return new Promise((resolve, reject) => {
-    //     setTimeout(()=> {
-    //       resolve(this.dt)
-    //     },10000)
-    //   })
-    // }
-    // const AccountData = ref(await loadAccountData())
     return {
-      columns,
-      allData,
-      //  AccountData
-      ResourceTable,
-      ResourceButton,
+     
     };
   },
-  data() {
-    return {
-      isShowPopup: false,
-    };
-  },
-  // proxy.$el.f
 };
 </script>
 <style lang="scss" scoped>
-@import "@/assets/scss/view/assetsQLTS/MsAsset.scss";
+@import "@/assets/scss/view/account/MsAccount.scss";
+@import "@/assets/scss/components/v_message_box.scss";
 </style>

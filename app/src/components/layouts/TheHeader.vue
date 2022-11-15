@@ -1,40 +1,47 @@
 <template>
   <div class="main-header">
     <div class="left-header">
-      <span class="title-page">Danh sách</span>
+      <span class="title-page">Danh sách nhạc</span>
     </div>
     <div class="right-header">
-      <!-- <div class="organization-name header-item">Sở tài chính</div>
-      <div class="ctr-number header-item">
-        <label>Năm</label>
-        <input type="number" value="2022" />
-      </div> -->
+      <!-- <div class="organization-name header-item">Nhạc</div> -->
       <div class="tool-header">
         <div class="tool notification">
-          <div class="app-icon ic-notification"></div>
+          <v-tooltip content="Thông báo" placement="bottom">
+            <div class="app-icon ic-notification"></div>
+          </v-tooltip>
         </div>
         <div class="tool tf-home">
-          <div class="app-icon ic-view-grid"></div>
+          <v-tooltip content="Lưới" placement="bottom">
+            <div class="app-icon ic-view-grid"></div>
+          </v-tooltip>
         </div>
         <div class="tool help">
-          <div class="app-icon ic-question-message"></div>
+          <v-tooltip content="Trợ giúp" placement="bottom">
+            <div class="app-icon ic-question-message"></div>
+          </v-tooltip>
         </div>
       </div>
       <div class="user-header">
         <div class="c-2 avatar">
-          <div class="app-icon ic-user"></div>
+          <v-tooltip content="Tài khoản" placement="bottom">
+            <div class="app-icon ic-user"></div>
+          </v-tooltip>
         </div>
         <div class="c-2 more">
-          <div class="app-icon ic-arow"></div>
+          <v-tooltip content="Xuống" placement="bottom">
+            <div class="app-icon ic-arow"></div>
+          </v-tooltip>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import VTooltip from "@/components/tooltip/VTooltip.vue";
 export default {
   name: "TheHeader",
-  components: {},
+  components: { VTooltip },
   data() {
     return {};
   },
@@ -42,5 +49,5 @@ export default {
 </script>
 
 <style lang="scss" scope>
-@import "@/assets/scss/layouts/TheHeader.scss";
+@import "@/assets/scss/layouts/the_header.scss";
 </style>

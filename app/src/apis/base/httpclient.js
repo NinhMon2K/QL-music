@@ -1,4 +1,4 @@
-import commonFunction from "@/commons/commonFunction";
+import commonFunction from "@/assets/js/commons/commonFunction.js";
 import axios from "axios";
 import Qs from "qs";
 
